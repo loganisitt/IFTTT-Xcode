@@ -1,4 +1,10 @@
 # IFTTT-Xcode
+Receive a notification when Xcode has finished building your project. 
+
+## Features
+* Receive a push notification to your phone when the project build is complete.
+* Notification indicates whether the build was successful or failed.
+* Shows how long it took to build the project in the notification.
 
 ## Setup
 ### Creating the Applet on [IFTTT](https://ifttt.com)
@@ -12,7 +18,7 @@
 
 [Applet Configuration Example](https://github.com/loganisitt/IFTTT-Xcode/blob/master/Applet%20Configuration.png)
 
-### Xcode Setup
+### Configure Xcode
 1. Clone/Download this Repo
 2. Replace KEY with you Maker Key in `xcode_finished.sh`
   * Maker Key can be found in the [Maker Settings](https://ifttt.com/services/maker/settings)
