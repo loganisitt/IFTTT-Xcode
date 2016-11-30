@@ -1,3 +1,4 @@
 #!/bin/bash
 
-echo $(date +%s) > ~/Documents/Scripts/build_start_time
+PROJECT=$(echo $XcodeProject | sed -e "s/".xcodeproj"/""/g")
+echo $(date +%s) > `dirname $0`/$PROJECT-timestamp
