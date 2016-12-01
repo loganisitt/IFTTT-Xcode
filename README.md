@@ -1,10 +1,11 @@
 # IFTTT-Xcode
-Receive a notification when Xcode has finished building your project. 
+Receive a notification when Xcode completes a build of your project.
 
 ## Features
-* Receive a push notification to your phone when the project build is complete.
-* Notification indicates whether the build was successful or failed.
-* Shows how long it took to build the project in the notification.
+* Sends a push notification using IFTTT to your phone when a project finishes building
+* Notification includes the project name, whether it was a success or failure, and how long it took to build
+* Only sends a notification if you computer has been idle for 30+ seconds
+* Supports multiple projects building at the same time
 
 ## Setup
 ### Creating the Applet on [IFTTT](https://ifttt.com)
