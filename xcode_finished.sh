@@ -1,4 +1,5 @@
 #!/bin/bash
+# Author: Logan Isitt
 
 function displaytime {
   local T=$1
@@ -22,7 +23,7 @@ DURATION=`expr $END - $START`
 BUILD_TIME=`echo $(displaytime $DURATION)`
 
 # Maximum idle time allowed to supress notification
-MAX_IDLE=30
+MAX_IDLE=60
 
 # Get Idle Time
 IDLE=$((`ioreg -c IOHIDSystem | sed -e '/HIDIdleTime/ !{ d' -e 't' -e '}' -e 's/.* = //g' -e 'q'` / 1000000000))
@@ -31,6 +32,8 @@ IDLE=$((`ioreg -c IOHIDSystem | sed -e '/HIDIdleTime/ !{ d' -e 't' -e '}' -e 's/
 if [ $IDLE -ge $MAX_IDLE ]; then
   curl -X POST  -H "Content-Type: application/json" -d "{\"value1\":\"$PROJECT\", \"value2\":\"$IDEAlertMessage\", \"value3\":\"$BUILD_TIME\"}" https://maker.ifttt.com/trigger/Xcode/with/key/$KEY
 fi
+
+echo "`whoami`,$PROJECT,`date +'%Y-%m-%d %H:%M:%S'`,$DURATION" >> `dirname $0`/buildlog.csv
 
 # Clean up
 rm `dirname $0`/$PROJECT-timestamp
