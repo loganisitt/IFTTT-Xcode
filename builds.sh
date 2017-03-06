@@ -14,7 +14,8 @@ function displaytime {
 }
 
 function usage {
-    echo "usage: $(basename "$0") [-p project] [-d date ] [-h]"
+    echo "usage: $(basename "$0") [-p project] [-d date] [-h]"
+    echo "date format: YYYY-mm-dd"
 }
 
 while [ "$1" != "" ]; do

@@ -3,9 +3,10 @@ Receive a notification when Xcode completes a build of your project.
 
 ## Features
 * Sends a push notification using IFTTT to your phone when a project finishes building
-* Notification includes the project name, whether it was a success or failure, and how long it took to build
-* Only sends a notification if you computer has been idle for 30+ seconds
+* Notification includes the project name, whether it was a success or failure, and build time
+* Only sends a notification if you computer has been idle for 60+ seconds
 * Supports multiple projects building at the same time
+* Logs build times
 
 ## Setup
 ### Creating the Applet on [IFTTT](https://ifttt.com)
@@ -30,3 +31,24 @@ Receive a notification when Xcode completes a build of your project.
   * Enable Run and Choose `xcode_finished.sh` script
 5. In `Xcode -> Preferences -> Behaviors -> Build -> Fails`
   * Enable Run and Choose `xcode_finished.sh` script
+
+## Logging
+Your username, project name, date, and build time will be logged to `buildlog.csv` for each build.
+
+Using `builds.sh`, you can see the total, average, and longest build times in `buildlog.csv`.
+
+The log can be filtered using the project name and the date.
+
+Examples:
+
+* Build times for every build in the log
+> ./builds.sh
+
+* Build times for SomeProject
+> ./builds.sh -p SomeProject
+
+* Build times on March 5, 2017
+> ./builds.sh -d 2017-03-05
+
+* Build times for SomeProject on March 5, 2017
+> ./builds.sh -p SomeProject -d 2017-03-05
